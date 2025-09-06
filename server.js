@@ -12,6 +12,10 @@ app.use(express.json());
 
 // MongoDB connection
 const uri = process.env.MONGODB_URI;
+if (!uri) {
+    console.error('MONGODB_URI environment variable is not set');
+    process.exit(1);
+}
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
