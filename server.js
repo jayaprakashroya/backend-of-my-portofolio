@@ -39,6 +39,10 @@ const messageSchema = new mongoose.Schema({
 const Message = mongoose.model('Message', messageSchema);
 
 // Routes
+app.get('/', (req, res) => {
+	res.send('Backend is running');
+});
+
 app.post('/api/contact', async (req, res) => {
 	try {
 		const { fullname, email, message } = req.body;

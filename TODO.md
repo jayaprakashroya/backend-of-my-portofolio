@@ -2,3 +2,8 @@
 - [x] Add disconnected event listener for completeness
 - [x] Create .env file with MONGODB_URI
 - [x] Test POST /api/contact endpoint
+- [x] Push changes to GitHub
+- [x] Add GET route for root path to fix Cannot GET error
+- [x] Test GET / route
+- [x] Test POST /api/contact with valid data
+- [x] Test POST /api/contact with invalid data
