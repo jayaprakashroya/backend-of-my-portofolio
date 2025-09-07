@@ -1,3 +1,4 @@
 - [x] Add error handling to MongoDB connection in server.js
 - [x] Add disconnected event listener for completeness
 - [x] Create .env file with MONGODB_URI
+- [x] Test POST /api/contact endpoint
