@@ -12,14 +12,20 @@ app.use(express.json());
 
 // MongoDB connection
 const uri = process.env.MONGODB_URI;
-if (!uri) {
-    console.error('MONGODB_URI environment variable is not set');
-    process.exit(1);
+if (!uri || !/^mongodb(\+srv)?:\/\//.test(uri)) {
+	console.error('MONGODB_URI environment variable is not set or is invalid.');
+	process.exit(1);
 }
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
 	console.log('MongoDB database connection established successfully');
+});
+connection.on('error', (error) => {
+	console.error('MongoDB connection error:', error);
+});
+connection.on('disconnected', () => {
+	console.log('MongoDB disconnected');
 });
 
 // Schema and Model
